@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PC Inspection System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="bi bi-pc-display"></i>
+
+            <h4>PC Report</h4>
+
+        </div>
+
+        <ul>
+
+            <li class="active" data-page="customer">
+                <i class="bi bi-person"></i>
+                معلومات الزبون
+            </li>
+
+            <li data-page="cpu">
+                <i class="bi bi-cpu"></i>
+                المعالج
+            </li>
+
+            <li data-page="gpu">
+                <i class="bi bi-gpu-card"></i>
+                كارت الشاشة
+            </li>
+
+            <li data-page="ram">
+                <i class="bi bi-memory"></i>
+                الرام
+            </li>
+
+            <li data-page="storage">
+                <i class="bi bi-device-hdd"></i>
+                التخزين
+            </li>
+
+            <li data-page="motherboard">
+                <i class="bi bi-motherboard"></i>
+                اللوحة الأم
+            </li>
+
+            <li data-page="photos">
+                <i class="bi bi-images"></i>
+                الصور
+            </li>
+
+            <li data-page="result">
+                <i class="bi bi-clipboard-check"></i>
+                النتيجة
+            </li>
+
+            <li data-page="pdf">
+                <i class="bi bi-file-earmark-pdf"></i>
+                إنشاء PDF
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="content">
+
+        <div id="pageContent">
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="data.js"></script>
+<script src="components.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
