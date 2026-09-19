@@ -103,7 +103,7 @@
       "foot.support": "Support the Project \u2615", "foot.status": "System Status",
       "foot.privacy": "Privacy Policy", "foot.terms": "Terms of Service",
       "foot.rights": "\u00A9 2026 checkmypc.ma. All rights reserved.",
-      "foot.builtBy": "Built by incconu_two",
+      "foot.builtBy": "Built by eaoussama",
       "foot.disclaimer": "PCPicker is an independent price comparison platform. Purchases are completed directly with the listed retailers.",
       "foot.language": "Language",
       "ui.theme": "Theme",
