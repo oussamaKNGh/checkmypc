@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>Build Guides — CHECKMYPC.MA</title>
+<meta name="description" content="Curated PC build guides for the Moroccan market.">
+<link rel="icon" href="../assets/mark.svg">
+<link rel="stylesheet" href="../assets/picker.css">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- Applied before first paint so a dark-mode user never sees a white flash.
+     app.js takes over from here; this only sets the initial attributes. -->
+<script>
+(function(){
+  try{
+    var t=localStorage.getItem("cmp.theme.v1");
+    if(t!=="dark"&&t!=="light"){
+      t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    }
+    document.documentElement.setAttribute("data-theme",t);
+    var l=localStorage.getItem("cmp.lang.v1");
+    if(l==="en"||l==="fr"||l==="ar"){
+      document.documentElement.setAttribute("lang",l);
+      document.documentElement.setAttribute("dir",l==="ar"?"rtl":"ltr");
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body data-page="builds">
+
+<!-- Global navigation is injected by app.js so every page stays in sync. -->
+<header id="site-header"></header>
+
+<main>
+
+<section class="prebuilt-hero"><span class="eyebrow">Build Guides</span>
+<h1 data-cms="page.title">Build guides</h1><p data-cms="page.description">Starting points you can load into the System Builder and adjust.</p></section>
+<div class="category-grid">
+  <a class="category-card" href="../builder/index.html"><div class="cat-icon"><img src="../assets/parts/cpu.svg" alt=""></div><h3>Budget 1080p</h3><p>Entry gaming under 8,000 DH.</p></a>
+  <a class="category-card" href="../builder/index.html"><div class="cat-icon"><img src="../assets/parts/gpu.svg" alt=""></div><h3>1440p Gaming</h3><p>High refresh, 12,000&ndash;18,000 DH.</p></a>
+  <a class="category-card" href="../builder/index.html"><div class="cat-icon"><img src="../assets/parts/ram.svg" alt=""></div><h3>Creator Workstation</h3><p>32 GB memory, fast NVMe.</p></a>
+  <a class="category-card" href="../builder/index.html"><div class="cat-icon"><img src="../assets/parts/case.svg" alt=""></div><h3>Small Form Factor</h3><p>Micro-ATX compact builds.</p></a>
+</div>
+<section class="section"><div class="section-head"><div><h2>Your saved build</h2>
+<p>Open the builder to edit the configuration stored in this browser.</p></div>
+<a class="btn primary" href="../builder/index.html">Open System Builder</a></div></section>
+
+</main>
+
+<!-- Footer is injected by app.js so its 4 columns stay in sync everywhere. -->
+<footer id="site-footer"></footer>
+
+<script>window.CHECKMYPC_ROOT="../";</script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

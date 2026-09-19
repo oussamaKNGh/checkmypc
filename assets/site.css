@@ -1,0 +1,561 @@
+/* ============================================================
+   CHECKMYPC.MA — component layer
+   Loads AFTER picker.css and inherits its tokens. Only styles
+   the systems added in this refactor: nav search, faceted
+   filters, stock states, offer comparator, price chart,
+   gallery + quantity. Nothing here overrides the base design.
+   ============================================================ */
+
+/* ---------- utility ---------- */
+.w-full{width:100%}
+.muted{color:var(--muted)}
+.pill{display:inline-block;padding:3px 8px;border-radius:99px;background:#eef6fc;border:1px solid #cfe6f5;color:#0877b8;font-size:11px;font-weight:800}
+
+/* ---------- nav additions ---------- */
+.nav-currency{padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fbfdff;color:#53677d;font-weight:800;font-size:12px;white-space:nowrap}
+.nav-icon{position:relative}
+#nav-search-btn{font-size:21px;line-height:1}
+.menu-trigger .caret{font-size:10px;opacity:.7}
+.nav-search{border-top:1px solid var(--line);background:#fff;padding:14px max(22px,calc((100% - 1380px)/2))}
+.nav-search input{width:100%;padding:13px 15px;border:1px solid #cfdbe6;border-radius:10px;outline:none;font-size:15px}
+.nav-search input:focus{border-color:#75c2e6;box-shadow:0 0 0 3px #e5f5fc}
+.nav-search-results{margin-top:8px;max-height:340px;overflow:auto}
+.nav-search-results a{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:10px 12px;border-radius:9px;color:#25384b}
+.nav-search-results a:hover{background:#f2f8fc}
+.nav-search-results img{width:26px;height:26px;object-fit:contain}
+.nav-search-results b{color:#0877b8}
+.ns-empty{padding:14px;color:var(--muted)}
+
+/* ---------- catalog sidebar ---------- */
+.filters{position:sticky;top:84px;max-height:calc(100vh - 104px);overflow:auto}
+.check{justify-content:flex-start}
+.check .count{margin-left:auto;color:#9aa8b6;font-size:11px}
+.budget-readout{display:flex;justify-content:space-between;font-weight:800;color:#0877b8;margin-bottom:9px;font-size:13px}
+.slider{width:100%;accent-color:var(--blue);margin-bottom:10px}
+.range input{width:100%}
+
+/* ---------- results ---------- */
+.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+.product-row .product-name{display:block}
+.product-row .product-name:hover{color:var(--blue)}
+.stock{display:inline-block;font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;margin-top:5px}
+.stock.ok{background:#e4f7ee;color:#08794f;border:1px solid #a9e3c8}
+.stock.warn{background:#fff4d9;color:#a06c06;border:1px solid #f5d98f}
+.stock.bad{background:#fdeaea;color:#b23b3b;border:1px solid #f2c2c2}
+
+/* ---------- product detail ---------- */
+.detail-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.detail-price-block{text-align:right}
+.detail-price-block small{display:block;color:var(--muted);font-weight:700;margin-bottom:2px}
+.gallery-main{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;display:grid;place-items:center;min-height:360px}
+.gallery-main img{width:85%;height:300px;object-fit:contain}
+.gallery-strip{display:flex;gap:9px;margin-top:10px}
+.gthumb{width:66px;height:66px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer;display:grid;place-items:center;padding:7px}
+.gthumb.active{border-color:var(--blue);box-shadow:0 0 0 3px #e5f5fc}
+.gthumb img{max-width:100%;max-height:100%;object-fit:contain}
+.qty-row{display:flex;align-items:center;gap:12px;margin:16px 0}
+.qty{display:flex;align-items:center;border:1px solid #cedbe6;border-radius:9px;overflow:hidden}
+.qty button{width:38px;height:40px;border:0;background:#f7fbfe;color:#41576b;font-size:17px;font-weight:800;cursor:pointer}
+.qty button:hover{background:#e8f4fb}
+.qty span{min-width:44px;text-align:center;font-weight:800}
+
+/* offer comparator */
+.offer-head{display:grid;grid-template-columns:1fr 150px 110px 90px;gap:10px;padding:12px 18px;background:#f7fbfe;border-bottom:1px solid var(--line);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#70839a}
+.offer-row{grid-template-columns:1fr 150px 110px 90px;gap:10px}
+.offer-row:last-child{border-bottom:0}
+.offer-row .checked{display:block;color:#9aa8b6;margin-top:4px;font-size:11px}
+.offer-row [aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+/* tabs */
+.tab-panel{padding:22px 0}
+.spec-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.spec-table th,.spec-table td{text-align:left;padding:13px 18px;border-bottom:1px solid #edf1f5}
+.spec-table th{width:240px;color:#5c7084;font-weight:700;background:#fbfdff}
+.spec-table tr:last-child th,.spec-table tr:last-child td{border-bottom:0}
+
+/* price history chart */
+.chart-wrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.price-chart{width:100%;height:auto;display:block}
+.price-chart .c-line{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linejoin:round}
+.price-chart .c-area{fill:rgba(7,139,209,.1);stroke:none}
+.price-chart circle{fill:#fff;stroke:var(--blue);stroke-width:2}
+.price-chart .c-lab{font-size:11px;font-weight:700;fill:#8b99a8}
+.chart-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:6px}
+
+/* ---------- builder ---------- */
+.builder-row{grid-template-columns:118px 1fr auto}
+.slot-browse{color:var(--blue);font-weight:800;font-size:12px;white-space:nowrap}
+.status .pass{color:#059669}
+.status .warn{color:#c88608}
+.status .fail{color:#c23b3b}
+.status span:last-child{text-align:right}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;right:18px;bottom:18px;z-index:99;background:var(--navy);color:#fff;padding:13px 17px;border-radius:11px;font-weight:800;box-shadow:0 14px 34px rgba(10,35,55,.25);transform:translateY(16px);opacity:0;pointer-events:none;transition:.2s}
+.toast.show{transform:none;opacity:1}
+
+/* ---------- empty state ---------- */
+.empty{padding:48px 22px;text-align:center;background:#fff;border:1px dashed #cbd9e4;border-radius:12px}
+.empty h3{margin:0 0 6px}
+.empty p{margin:0;color:var(--muted)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1050px){
+  .offer-head{grid-template-columns:1fr 120px 100px 80px}
+  .offer-row{grid-template-columns:1fr 120px 100px 80px}
+}
+@media(max-width:800px){
+  .filters{position:static;max-height:none}
+  .nav-currency{display:none}
+  .builder-row{grid-template-columns:1fr}
+  .slot-browse{justify-self:start}
+  .catalog-toolbar{flex-direction:column;align-items:stretch}
+  .detail-price-block{text-align:left}
+  .offer-head{display:none}
+  .offer-row{grid-template-columns:1fr auto}
+  .offer-row .offer-price{text-align:right}
+}
+@media(max-width:560px){
+  .gallery-main{min-height:250px}
+  .gallery-main img{height:200px}
+  .spec-table th{width:130px}
+}
+
+/* ============================================================
+   RESPONSIVE NAVIGATION — hamburger + slide-out panel
+   ============================================================ */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}
+.nav-burger span{display:block;height:2px;border-radius:2px;background:#41576b;transition:transform .22s,opacity .18s}
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+body.nav-locked{overflow:hidden}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:#fff;border-top:1px solid var(--line);margin-top:60px}
+.foot-banner{background:linear-gradient(180deg,#eef8fe,#f8fbfd);border-bottom:1px solid var(--line);padding:26px max(22px,calc((100% - 1380px)/2))}
+.foot-banner p{margin:0;max-width:880px;color:#3f5568;font-size:15px;line-height:1.65;font-weight:600}
+.foot-cols{max-width:1380px;margin:auto;padding:38px 22px 30px;display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:30px}
+.foot-col h4{margin:0 0 14px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#41576b}
+.foot-brand .brand{margin-bottom:16px}
+.foot-links{display:flex;flex-direction:column;gap:9px}
+.foot-links a{color:#61738a;font-size:13.5px;line-height:1.45;transition:color .15s}
+.foot-links a:hover{color:var(--blue)}
+.foot-more{font-weight:800;color:var(--blue)!important;margin-top:3px}
+.foot-arrow{display:inline-block}
+.foot-bottom{border-top:1px solid var(--line);background:#fbfdff}
+.foot-bottom{max-width:none;padding:20px max(22px,calc((100% - 1380px)/2));display:flex;align-items:flex-start;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.foot-legal{color:#7d8c9c;font-size:12.5px;line-height:1.6;max-width:760px}
+.foot-sep{margin:0 7px;color:#c2ceda}
+.foot-disclaimer{margin:7px 0 0;color:#93a1af;font-size:12px;line-height:1.55}
+.lang-switch{display:flex;align-items:center;gap:8px}
+.lang-globe{color:#7d8c9c;font-size:15px}
+.lang-switch .select{min-width:132px;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ============================================================
+   MOBILE FILTER DRAWER
+   ============================================================ */
+.filter-bar{display:none;gap:10px;margin-bottom:12px}
+.filter-bar .btn{flex:1}
+.filter-close{display:none}
+
+/* ============================================================
+   RTL — logical flips only; the base layout stays untouched
+   ============================================================ */
+html[dir="rtl"] body{direction:rtl;text-align:right}
+html[dir="rtl"] .nav,html[dir="rtl"] .links,html[dir="rtl"] .nav-right,
+html[dir="rtl"] .hero-actions,html[dir="rtl"] .foot-links{direction:rtl}
+html[dir="rtl"] .price-col,html[dir="rtl"] .offer-price,
+html[dir="rtl"] .detail-price-block{text-align:left}
+html[dir="rtl"] .status span:last-child{text-align:left}
+html[dir="rtl"] .check .count{margin-left:0;margin-right:auto}
+html[dir="rtl"] .product-sub,html[dir="rtl"] .offer-store small{text-align:right}
+html[dir="rtl"] .spec-table th,html[dir="rtl"] .spec-table td{text-align:right}
+html[dir="rtl"] .pc-badge{left:auto;right:8px}
+html[dir="rtl"] .pc-store{right:auto;left:8px}
+html[dir="rtl"] .hero-badge{left:auto;right:18px}
+html[dir="rtl"] .toast{right:auto;left:18px}
+html[dir="rtl"] .foot-arrow,html[dir="rtl"] .detail-tabs{transform:none}
+html[dir="rtl"] .foot-arrow{display:inline-block;transform:scaleX(-1)}
+html[dir="rtl"] .filters{direction:rtl}
+html[dir="rtl"] .mega{direction:rtl}
+/* Latin part names and DH prices stay LTR inside an RTL page. */
+html[dir="rtl"] .product-name,html[dir="rtl"] .offer-store,
+html[dir="rtl"] .price-col strong,html[dir="rtl"] .offer-price,
+html[dir="rtl"] .detail-price,html[dir="rtl"] .summary-total,
+html[dir="rtl"] .pc-price,html[dir="rtl"] .mini-stat b{direction:ltr;unicode-bidi:embed;display:inline-block}
+html[dir="rtl"] .price-col strong,html[dir="rtl"] .offer-price{display:block}
+/* Arabic reads better with slightly more line height. */
+html[lang="ar"]{font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,Arial,sans-serif}
+html[lang="ar"] body{line-height:1.75}
+html[lang="ar"] .hero h1,html[lang="ar"] .prebuilt-hero h1{letter-spacing:0}
+
+/* ============================================================
+   BREAKPOINTS
+   ============================================================ */
+@media(max-width:1100px){
+  .foot-cols{grid-template-columns:1fr 1fr;gap:26px 30px}
+}
+
+/* --- tablet / mobile nav --- */
+@media(max-width:900px){
+  /* Mobile header: logo | search | menu. Keep the controls together on the right. */
+  .nav{gap:8px;direction:ltr}
+  .nav-burger{display:flex;order:3;flex:0 0 42px}
+  .nav-right{display:contents}
+  #nav-search-btn{order:2;flex:0 0 42px}
+  .brand{order:1;margin-right:auto}
+  .nav-right .nav-currency,.nav-right .theme-toggle,.nav-right .lang-select,.nav-right .nav-cta{display:none}
+
+  /* Portaled to <body> by app.js: fixed positioning is now relative to the viewport. */
+  .links{position:fixed;inset:0 0 0 auto;width:min(84vw,340px);height:100dvh;max-height:100dvh;flex-direction:column;align-items:stretch;gap:2px;background:var(--card);border-left:1px solid var(--line);box-shadow:-18px 0 44px rgba(15,39,61,.16);padding:20px 16px 28px;transform:translateX(102%);transition:transform .26s ease;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;z-index:2147483646}
+  .links.open{transform:none}
+  html[dir="rtl"] .links{inset:0 auto 0 0;border-left:0;border-right:1px solid var(--line);box-shadow:18px 0 44px rgba(15,39,61,.16);transform:translateX(-102%)}
+  html[dir="rtl"] .links.open{transform:none}
+  .links>a,.menu-trigger{width:100%;text-align:inherit;padding:14px 12px;font-size:15px;border-bottom:1px solid #eef3f7;border-radius:0}
+  /* The mega-menu becomes a plain nested list inside the drawer. */
+  .menu-wrap{position:static}
+  .menu-wrap .mega{position:static;transform:none;width:auto;display:none;border:0;box-shadow:none;padding:0 0 0 12px;grid-template-columns:1fr!important}
+  .menu-wrap.open .mega{display:block}
+  .mega h4{margin-top:12px}
+  .nav-cta{padding:9px 11px;font-size:13px}
+}
+
+/* --- catalog + tables on small screens --- */
+@media(max-width:900px){
+  .filter-bar{display:flex}
+  .catalog-layout{grid-template-columns:1fr}
+  .filters{position:fixed;inset:0 auto 0 0;width:min(88vw,360px);max-height:none;height:100%;z-index:61;border-radius:0;transform:translateX(-102%);transition:transform .26s ease;overflow-y:auto;box-shadow:18px 0 44px rgba(15,39,61,.16)}
+  .filters.open{transform:none}
+  html[dir="rtl"] .filters{inset:0 0 0 auto;transform:translateX(102%)}
+  html[dir="rtl"] .filters.open{transform:none}
+  .filter-close{display:block;position:sticky;top:0;width:100%;padding:14px;border:0;border-bottom:1px solid var(--line);background:#fff;font-weight:800;color:#41576b;cursor:pointer;text-align:start}
+
+  /* Product rows become stacked cards instead of a squeezed grid. */
+  .product-list{background:transparent;border:0}
+  .product-row{grid-template-columns:56px 1fr;grid-template-areas:"thumb name" "spec spec" "price add";gap:10px 14px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:14px}
+  .product-row .thumb{grid-area:thumb}
+  .product-row>div:nth-child(2){grid-area:name}
+  .product-row .spec{grid-area:spec;display:flex!important;align-items:center;gap:10px}
+  .product-row .price-col{grid-area:price;text-align:start}
+  .product-row .add-btn{grid-area:add;display:block!important;justify-self:end;padding:11px 18px}
+  html[dir="rtl"] .product-row .price-col{text-align:right}
+
+  /* Offer comparator becomes labelled cards. */
+  .offers .offer-head{display:none}
+  .offer-row{grid-template-columns:1fr auto;gap:8px 14px;padding:14px 16px}
+  .offer-row>div[data-label]::before{content:attr(data-label) ": ";color:#93a1af;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+  .offer-row .btn{grid-column:1/-1;justify-self:stretch;margin-top:6px}
+  .spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block;width:auto}
+  .spec-table tr{border-bottom:1px solid #edf1f5;padding:10px 0}
+  .spec-table th{background:transparent;padding:0 16px 3px;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+  .spec-table td{padding:0 16px;font-weight:700}
+  .chart-wrap{overflow-x:auto}
+  .price-chart{min-width:520px}
+}
+
+@media(max-width:700px){
+  .foot-cols{grid-template-columns:1fr;gap:26px;padding:30px 22px 24px}
+  .foot-bottom{flex-direction:column;align-items:stretch}
+  .lang-switch{justify-content:flex-start}
+  .lang-switch .select{flex:1}
+  .foot-banner p{font-size:14px}
+}
+
+@media(max-width:480px){
+  .nav-cta span[data-i18n]{display:none}
+  .prebuilt-grid,.category-grid{grid-template-columns:1fr}
+  .select-row{grid-template-columns:1fr}
+  .budget-row{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .budget{white-space:nowrap}
+  .detail-tabs{overflow-x:auto}
+  .qty-row{flex-wrap:wrap}
+  .qty-row .btn{flex:1}
+}
+
+/* ============================================================
+   THEME TOKENS
+   picker.css now reads its surfaces from these, so a theme is
+   just a different set of values on :root. Light is the default;
+   dark applies when <html data-theme="dark">.
+   ============================================================ */
+:root{
+  --card:#ffffff;
+  --surface-2:#fbfdff;
+  --surface-3:#f2f8fc;
+  --header-bg:rgba(255,255,255,.96);
+  --hero-grad:linear-gradient(180deg,#eef8fe,#f8fbfd);
+  --drawer-backdrop:rgba(12,32,50,.34);
+  --ring:#e5f5fc;
+  --input-bg:#ffffff;
+  --thumb-bg:#ffffff;
+  color-scheme:light;
+}
+
+html[data-theme="dark"]{
+  --blue:#38bdf8;
+  --blue2:#22a7e8;
+  --navy:#0a0c10;
+  --ink:#e6edf5;
+  --muted:#8b98a8;
+  --bg:#0a0c10;
+  --card:#12161d;
+  --surface-2:#161b23;
+  --surface-3:#1c2430;
+  --line:#262f3b;
+  --soft:#16222c;
+  --green:#34d399;
+  --orange:#fbbf24;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --header-bg:rgba(10,12,16,.88);
+  --hero-grad:linear-gradient(180deg,#121a24,#0c1016);
+  --drawer-backdrop:rgba(3,6,10,.58);
+  --ring:rgba(56,189,248,.22);
+  --input-bg:#161b23;
+  --thumb-bg:#1a212b;
+  color-scheme:dark;
+}
+
+/* Transition only the properties that actually change, and skip it for
+   users who asked for reduced motion. */
+body,.top,.site-footer,.category-card,.product-row,.filters,.offers,
+.image-card,.builder-card,.summary-card,.pc-card,.form-card,.toolbar,
+.chart-wrap,.spec-table,.btn,.select,.searchbox,.mega,.nav-search{
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* ---- dark-mode corrections for surfaces picker.css styles by hand ---- */
+html[data-theme="dark"] body{
+  background:radial-gradient(circle at 50% -12%,rgba(56,189,248,.10),transparent 42%),var(--bg);
+}
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .detail-hero,
+html[data-theme="dark"] .foot-banner{background:var(--hero-grad)}
+html[data-theme="dark"] .hero:after{background:radial-gradient(circle,rgba(56,189,248,.16) 0,transparent 68%);opacity:.5}
+html[data-theme="dark"] .eyebrow{background:rgba(56,189,248,.14);color:#7dd3fc}
+html[data-theme="dark"] .btn{border-color:#2c3644;color:#cfdae6}
+html[data-theme="dark"] .btn:hover{border-color:var(--blue)}
+html[data-theme="dark"] .btn.primary{color:#04121c}
+html[data-theme="dark"] .btn.soft{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.3);color:#7dd3fc}
+html[data-theme="dark"] .nav-cta{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.34);color:#7dd3fc}
+html[data-theme="dark"] .add-btn{color:#04121c}
+html[data-theme="dark"] .searchbox,html[data-theme="dark"] .select,
+html[data-theme="dark"] .range input,html[data-theme="dark"] .field input,
+html[data-theme="dark"] .field select,html[data-theme="dark"] .field textarea,
+html[data-theme="dark"] .builder-row select,html[data-theme="dark"] .nav-search input{
+  background:var(--input-bg);border-color:#2c3644;color:var(--ink);
+}
+html[data-theme="dark"] .searchbox:focus,html[data-theme="dark"] .nav-search input:focus{
+  border-color:var(--blue);box-shadow:0 0 0 3px var(--ring);
+}
+html[data-theme="dark"] .thumb,html[data-theme="dark"] .gthumb,
+html[data-theme="dark"] .mi,html[data-theme="dark"] .cat-icon,
+html[data-theme="dark"] .pc-image,html[data-theme="dark"] .gallery-main{
+  background:var(--thumb-bg);border-color:var(--line);
+}
+html[data-theme="dark"] .pc-badge,html[data-theme="dark"] .pc-store,
+html[data-theme="dark"] .hero-badge,html[data-theme="dark"] .chip{
+  background:var(--surface-3);border-color:var(--line);color:#cbd6e2;
+}
+html[data-theme="dark"] .product-row:hover{background:var(--surface-2)}
+html[data-theme="dark"] .qty button{background:var(--surface-3);color:#cfdae6}
+html[data-theme="dark"] .pill{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.28);color:#7dd3fc}
+html[data-theme="dark"] .empty{background:var(--card);border-color:#303a48}
+html[data-theme="dark"] .toast{background:#1c2430;border:1px solid var(--line)}
+html[data-theme="dark"] .stock.ok{background:rgba(52,211,153,.14);color:#6ee7b7;border-color:rgba(52,211,153,.3)}
+html[data-theme="dark"] .stock.warn{background:rgba(251,191,36,.14);color:#fcd34d;border-color:rgba(251,191,36,.3)}
+html[data-theme="dark"] .stock.bad{background:rgba(248,113,113,.14);color:#fca5a5;border-color:rgba(248,113,113,.3)}
+html[data-theme="dark"] .used-badge{background:rgba(251,191,36,.15);color:#fcd34d;border-color:rgba(251,191,36,.32)}
+html[data-theme="dark"] .price-chart .c-area{fill:rgba(56,189,248,.14)}
+html[data-theme="dark"] .price-chart circle{fill:var(--card)}
+html[data-theme="dark"] .spec-table th{background:var(--surface-2)}
+html[data-theme="dark"] .nav-burger{background:var(--card);border-color:var(--line)}
+html[data-theme="dark"] .nav-burger span{background:#cfdae6}
+html[data-theme="dark"] .fresh{color:#6ee7b7}
+
+/* ============================================================
+   THEME + LANGUAGE CONTROLS (header and footer share these)
+   ============================================================ */
+.theme-toggle{position:relative;width:38px;height:38px;flex:0 0 38px;border:1px solid var(--line);background:var(--card);border-radius:9px;cursor:pointer;display:grid;place-items:center;overflow:hidden;color:#53677d}
+.theme-toggle:hover{border-color:var(--blue)}
+.theme-toggle .ic{position:absolute;font-size:16px;line-height:1;transition:transform .34s cubic-bezier(.4,0,.2,1),opacity .24s ease}
+.theme-toggle .ic-sun{transform:translateY(20px) rotate(-70deg);opacity:0}
+.theme-toggle .ic-moon{transform:none;opacity:1}
+html[data-theme="dark"] .theme-toggle .ic-sun{transform:none;opacity:1}
+html[data-theme="dark"] .theme-toggle .ic-moon{transform:translateY(-20px) rotate(70deg);opacity:0}
+.lang-select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:#53677d;font-weight:700;cursor:pointer;max-width:140px}
+.lang-select:hover{border-color:var(--blue)}
+html[data-theme="dark"] .lang-select,html[data-theme="dark"] .theme-toggle{color:#cfdae6}
+.nav-right .lang-select{font-size:12.5px}
+
+/* ============================================================
+   MOBILE DRAWER — grouped links, backdrop, staggered entry
+   ============================================================ */
+.drawer-backdrop{position:fixed;inset:0;width:100vw;height:100dvh;z-index:2147483645;background:var(--drawer-backdrop);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .26s ease;overscroll-behavior:contain}
+.drawer-backdrop.open{opacity:1;pointer-events:auto}
+.drawer-head{display:none;align-items:center;justify-content:space-between;gap:12px;padding:0 4px 16px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.drawer-tools{display:flex;align-items:center;gap:8px}
+.drawer-group{margin-top:20px}
+.drawer-group:first-of-type{margin-top:4px}
+.drawer-group>h5{margin:0 0 8px;padding:0 12px;font-size:11px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
+.drawer-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px}
+.drawer-chips a{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid var(--line);border-radius:99px;background:var(--surface-2);font-weight:700;font-size:13px;color:var(--ink)}
+.drawer-chips a:hover{border-color:var(--blue);color:var(--blue)}
+.drawer-chips img{width:17px;height:17px}
+
+@media(max-width:900px){
+  .links{padding:20px 16px 28px;gap:0;background:var(--card);border-left:1px solid var(--line)}
+  .drawer-head{display:flex}
+  /* Links fade+slide in, staggered, once the drawer is open. */
+  .links.open>a,.links.open .menu-wrap,.links.open .drawer-group{animation:drawerIn .34s cubic-bezier(.22,1,.36,1) both}
+  .links.open>a:nth-child(2){animation-delay:.04s}
+  .links.open .menu-wrap{animation-delay:.08s}
+  .links.open>a:nth-child(4){animation-delay:.12s}
+  .links.open>a:nth-child(5){animation-delay:.16s}
+  .links.open>a:nth-child(6){animation-delay:.2s}
+  .links.open .drawer-group:nth-of-type(1){animation-delay:.24s}
+  .links.open .drawer-group:nth-of-type(2){animation-delay:.28s}
+  .links>a{border-bottom:1px solid var(--line)}
+  .nav-right .lang-select,.nav-right .theme-toggle{display:none}
+}
+@keyframes drawerIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+html[dir="rtl"] .links.open>a,html[dir="rtl"] .links.open .drawer-group{animation-name:drawerInRtl}
+@keyframes drawerInRtl{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media(min-width:901px){
+  .drawer-backdrop{display:none}
+  .drawer-group,.drawer-head{display:none!important}
+}
+
+
+
+/* ============================================================
+   V11.2 — PORTALED MEGA MENU
+   The dropdown is moved to <body> by app.js so it cannot be clipped
+   by the mobile drawer, transforms, overflow, or page stacking contexts.
+   ============================================================ */
+.mega.mega-portal{
+  position:fixed !important;
+  top:0;
+  left:0;
+  width:min(850px,calc(100vw - 24px));
+  max-height:calc(100vh - 82px);
+  overflow:auto;
+  margin:0;
+  z-index:2147483647 !important;
+  display:none !important;
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+  transform:none !important;
+  background:var(--card);
+  color:var(--ink);
+  border:1px solid var(--line);
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+}
+.mega.mega-portal.portal-open{
+  display:grid !important;
+  visibility:visible;
+  opacity:1;
+  pointer-events:auto;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.mega.mega-portal a{color:var(--ink)}
+.mega.mega-portal h4{color:var(--muted)}
+.mega.mega-portal a:hover{background:var(--surface-3);color:var(--blue)}
+.mega.mega-portal .mi{background:var(--surface-2);border-color:var(--line)}
+@media(max-width:800px){
+  .mega.mega-portal.portal-open{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+}
+@media(max-width:560px){
+  .mega.mega-portal.portal-open{grid-template-columns:1fr !important}
+}
+
+/* The drawer is portaled to <body> on mobile, so it is never clipped by the
+   sticky header/backdrop-filter stacking context. */
+@media(max-width:900px){
+  body.nav-locked{overflow:hidden;touch-action:none}
+  .links,.drawer-backdrop{contain:none!important}
+}
+
+/* ============================================================
+   V11.1 THEME + NAV FIXES
+   ============================================================ */
+/* Brand switches between two actual SVG logo files with the theme. */
+.brand .brand-logo{display:block;width:148px;height:auto;max-height:46px;object-fit:contain;object-position:left center}
+.brand .logo-dark{display:none}
+html[data-theme="dark"] .brand .logo-light{display:none}
+html[data-theme="dark"] .brand .logo-dark{display:block}
+.foot-brand .brand .brand-logo{width:178px;max-height:52px}
+
+/* Mega menu: always renders above the page, and opens reliably by click/hover. */
+.top{position:sticky !important;top:0;z-index:10000 !important;overflow:visible;isolation:isolate}
+.nav{position:relative;z-index:1001}
+.menu-wrap{position:relative;z-index:1002}
+.mega{z-index:1100;top:calc(100% + 6px);visibility:hidden;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-4px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease}
+.menu-wrap:hover .mega,.menu-wrap.open .mega{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+
+/* Dark mode: convert all remaining hard-coded light panels to theme tokens. */
+html[data-theme="dark"] .nav-currency,
+html[data-theme="dark"] .nav-search,
+html[data-theme="dark"] .nav-search-results a,
+html[data-theme="dark"] .gallery-main,
+html[data-theme="dark"] .gthumb,
+html[data-theme="dark"] .offer-head,
+html[data-theme="dark"] .spec-table,
+html[data-theme="dark"] .chart-wrap,
+html[data-theme="dark"] .empty,
+html[data-theme="dark"] .site-footer,
+html[data-theme="dark"] .foot-bottom,
+html[data-theme="dark"] .nav-burger,
+html[data-theme="dark"] .filter-close,
+html[data-theme="dark"] .product-row,
+html[data-theme="dark"] .links{background:var(--card);color:var(--ink)}
+html[data-theme="dark"] .nav-currency{color:#cbd6e2}
+html[data-theme="dark"] .nav-search-results a:hover{background:var(--surface-3)}
+html[data-theme="dark"] .nav-burger span{background:#cbd6e2}
+html[data-theme="dark"] .gthumb.active{box-shadow:0 0 0 3px var(--ring)}
+html[data-theme="dark"] .qty{border-color:var(--line)}
+html[data-theme="dark"] .qty button{background:var(--surface-3);color:#cbd6e2}
+html[data-theme="dark"] .qty button:hover{background:#202b38}
+html[data-theme="dark"] .offer-head{background:var(--surface-2);color:#aab7c5}
+html[data-theme="dark"] .spec-table th{background:var(--surface-2);color:#aab7c5}
+html[data-theme="dark"] .spec-table td{color:var(--ink)}
+html[data-theme="dark"] .spec-table th,html[data-theme="dark"] .spec-table td{border-bottom-color:var(--line)}
+html[data-theme="dark"] .chart-wrap{border-color:var(--line)}
+html[data-theme="dark"] .price-chart circle{fill:var(--card)}
+html[data-theme="dark"] .empty{border-color:var(--line)}
+html[data-theme="dark"] .foot-banner{border-color:var(--line)}
+html[data-theme="dark"] .foot-banner p{color:#b7c4d1}
+html[data-theme="dark"] .foot-col h4{color:#cbd6e2}
+html[data-theme="dark"] .foot-links a{color:#9eacba}
+html[data-theme="dark"] .foot-links a:hover{color:#7dd3fc}
+html[data-theme="dark"] .foot-legal{color:#8998a8}
+html[data-theme="dark"] .foot-disclaimer{color:#778697}
+html[data-theme="dark"] .foot-sep{color:#4b5867}
+html[data-theme="dark"] .lang-globe{color:#9eacba}
+html[data-theme="dark"] .pill{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.28);color:#7dd3fc}
+html[data-theme="dark"] .stock.ok{background:rgba(52,211,153,.14);color:#6ee7b7;border-color:rgba(52,211,153,.3)}
+html[data-theme="dark"] .stock.warn{background:rgba(251,191,36,.14);color:#fcd34d;border-color:rgba(251,191,36,.3)}
+html[data-theme="dark"] .stock.bad{background:rgba(248,113,113,.14);color:#fca5a5;border-color:rgba(248,113,113,.3)}
+
+/* Mobile drawer must inherit the active theme too. */
+@media(max-width:900px){
+  html[data-theme="dark"] .links{background:var(--card);border-color:var(--line)}
+  html[data-theme="dark"] .links>a,html[data-theme="dark"] .menu-trigger{color:#cbd6e2;border-bottom-color:var(--line)}
+  html[data-theme="dark"] .links>a:hover,html[data-theme="dark"] .menu-trigger:hover{background:var(--surface-3);color:#7dd3fc}
+  html[data-theme="dark"] .menu-wrap .mega{background:var(--card)}
+  html[data-theme="dark"] .filter-close{background:var(--card);color:#cbd6e2}
+}
+
+/* Keep the logo compact on phones while preserving the two variants. */
+@media(max-width:900px){.brand .brand-logo{width:124px;max-height:40px}.foot-brand .brand .brand-logo{width:165px}}
+@media(max-width:480px){.brand .brand-logo{width:112px}}
+.catalog-actions{display:flex;gap:7px;align-items:center;justify-content:flex-end}.catalog-actions .add-btn{white-space:nowrap;text-decoration:none}.offer-link{background:var(--soft)!important;color:var(--blue)!important;border:1px solid var(--line)!important}@media(max-width:700px){.catalog-actions{justify-content:flex-start;flex-wrap:wrap}}

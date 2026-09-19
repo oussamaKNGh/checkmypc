@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>System Builder — CHECKMYPC.MA</title>
+<meta name="description" content="Pick parts, check compatibility and price your build in DH.">
+<link rel="icon" href="../assets/mark.svg">
+<link rel="stylesheet" href="../assets/picker.css">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- Applied before first paint so a dark-mode user never sees a white flash.
+     app.js takes over from here; this only sets the initial attributes. -->
+<script>
+(function(){
+  try{
+    var t=localStorage.getItem("cmp.theme.v1");
+    if(t!=="dark"&&t!=="light"){
+      t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    }
+    document.documentElement.setAttribute("data-theme",t);
+    var l=localStorage.getItem("cmp.lang.v1");
+    if(l==="en"||l==="fr"||l==="ar"){
+      document.documentElement.setAttribute("lang",l);
+      document.documentElement.setAttribute("dir",l==="ar"?"rtl":"ltr");
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body data-page="builder">
+
+<!-- Global navigation is injected by app.js so every page stays in sync. -->
+<header id="site-header"></header>
+
+<main>
+
+<section class="prebuilt-hero">
+  <span class="eyebrow" data-cms="page.eyebrow">System Builder</span>
+  <h1 data-cms="page.title">Build your PC</h1>
+  <p data-cms="page.description">Pick a part per slot. Totals, power draw and compatibility update live, and your
+     build is kept in this browser.</p>
+</section>
+
+<div class="builder-layout" id="builder-view">
+  <div class="builder-card">
+    <div id="builder-slots"></div>
+    <div class="hero-actions">
+      <button class="btn primary" id="b-share" type="button">Share build link</button>
+      <button class="btn" id="b-clear" type="button">Clear build</button>
+      <a class="btn soft" href="../products/index.html">Add more parts</a>
+    </div>
+  </div>
+
+  <aside class="summary-card">
+    <div style="color:#728398;font-weight:800;font-size:12px;letter-spacing:.5px">BUILD SUMMARY</div>
+    <div class="summary-total" id="b-total">0 DH</div>
+    <div class="summary-grid">
+      <div class="mini-stat"><small>Used estimate</small><b id="b-used">0 DH</b></div>
+      <div class="mini-stat"><small>Power draw</small><b id="b-power">0W</b></div>
+      <div class="mini-stat"><small>Recommended PSU</small><b id="b-rec">&mdash;</b></div>
+      <div class="mini-stat"><small>Parts chosen</small><b id="b-parts">0 / 8</b></div>
+    </div>
+    <h3>Compatibility</h3>
+    <div id="b-checks"></div>
+  </aside>
+</div>
+
+</main>
+
+<!-- Footer is injected by app.js so its 4 columns stay in sync everywhere. -->
+<footer id="site-footer"></footer>
+
+<script>window.CHECKMYPC_ROOT="../";</script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

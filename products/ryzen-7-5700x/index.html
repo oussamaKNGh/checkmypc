@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>AMD Ryzen 7 5700X — price in Morocco — CHECKMYPC.MA</title>
+<meta name="description" content="Compare AMD Ryzen 7 5700X prices across Moroccan stores.">
+<link rel="icon" href="../../assets/mark.svg">
+<link rel="stylesheet" href="../../assets/picker.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<!-- Applied before first paint so a dark-mode user never sees a white flash.
+     app.js takes over from here; this only sets the initial attributes. -->
+<script>
+(function(){
+  try{
+    var t=localStorage.getItem("cmp.theme.v1");
+    if(t!=="dark"&&t!=="light"){
+      t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    }
+    document.documentElement.setAttribute("data-theme",t);
+    var l=localStorage.getItem("cmp.lang.v1");
+    if(l==="en"||l==="fr"||l==="ar"){
+      document.documentElement.setAttribute("lang",l);
+      document.documentElement.setAttribute("dir",l==="ar"?"rtl":"ltr");
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body data-page="products">
+
+<!-- Global navigation is injected by app.js so every page stays in sync. -->
+<header id="site-header"></header>
+
+<main>
+
+<section class="detail-hero" id="product-view" data-product="ryzen-7-5700x">
+  <div class="detail-head">
+    <div>
+      <span class="eyebrow" id="p-brand"></span>
+      <h1 id="p-title"></h1>
+      <div class="chips"><span class="chip" id="p-stock"></span></div>
+    </div>
+    <div class="detail-price-block">
+      <small>Lowest price</small>
+      <div class="detail-price" id="p-price"></div>
+      <button class="btn primary" id="p-alert" type="button" style="margin-top:10px"></button>
+    </div>
+  </div>
+
+  <div class="detail-layout">
+    <!-- Left: gallery + add to part list -->
+    <div>
+      <div id="p-gallery"></div>
+      <div class="qty-row">
+        <div class="qty">
+          <button id="p-qty-dec" type="button" aria-label="Decrease quantity">&minus;</button>
+          <span id="p-qty-out">1</span>
+          <button id="p-qty-inc" type="button" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn primary" id="p-add" type="button">Add to part list</button>
+      </div>
+    </div>
+
+    <!-- Right: store offer comparator -->
+    <div class="offers">
+      <h3>Store offers</h3>
+      <div id="p-offers"></div>
+    </div>
+  </div>
+
+  <div class="detail-tabs" style="margin-top:28px">
+    <a href="#" data-tab="specs" class="active">Specifications</a>
+    <a href="#" data-tab="history">Price history</a>
+  </div>
+  <div class="tab-panel" id="tab-specs"></div>
+  <div class="tab-panel" id="tab-history" hidden></div>
+</section>
+
+</main>
+
+<!-- Footer is injected by app.js so its 4 columns stay in sync everywhere. -->
+<footer id="site-footer"></footer>
+
+<script>window.CHECKMYPC_ROOT="../../";</script>
+<script src="../../assets/catalog.js"></script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

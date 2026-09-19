@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>CHECKMYPC Admin — Control Center</title>
+<link rel="icon" href="../assets/mark.svg"><link rel="stylesheet" href="../assets/picker.css"><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/admin.css">
+<script>(function(){try{var t=localStorage.getItem("cmp.theme.v1");if(t!=="dark"&&t!=="light")t=matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);var l=localStorage.getItem("cmp.lang.v1");if(l==="en"||l==="fr"||l==="ar"){document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr"}}catch(e){}})();</script>
+</head>
+<body data-page="admin">
+<header id="site-header"></header>
+<main class="admin-wrap">
+  <section class="admin-hero">
+    <div><span class="eyebrow">Private area · CHECKMYPC.MA</span><h1>Control Center</h1><p>Manage the content visitors see: components, prebuilt PCs, prices, images, offer links, categories and the main website text.</p></div>
+    <div class="admin-actions"><a class="btn" href="../index.html">View website</a></div>
+  </section>
+  <div class="admin-note"><b>Prototype mode:</b> this dashboard controls the static site's browser data. It is ideal for building/testing the CMS UI. For real public publishing to every visitor/device, connect the same data model to a server database and secure this area with authentication. citeturn0search0</div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" data-tab="dashboard">Dashboard</button>
+    <button class="admin-tab" data-tab="components">Components</button>
+    <button class="admin-tab" data-tab="prebuilt">Prebuilt PCs</button>
+    <button class="admin-tab" data-tab="content">Website Content</button>
+    <button class="admin-tab" data-tab="categories">Categories</button>
+    <button class="admin-tab" data-tab="data">Backup</button>
+  </div>
+  <div class="admin-section-head"><h2 id="admin-section-title">Dashboard</h2></div>
+  <div id="admin-main"></div>
+</main>
+<footer id="site-footer"></footer>
+<script>window.CHECKMYPC_ROOT="../";</script><script src="../assets/catalog.js"></script><script src="../assets/app.js"></script><script src="../assets/admin.js"></script>
+</body></html>

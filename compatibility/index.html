@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>Compatibility — CHECKMYPC.MA</title>
+<meta name="description" content="PC part compatibility checks.">
+<link rel="icon" href="../assets/mark.svg">
+<link rel="stylesheet" href="../assets/picker.css">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- Applied before first paint so a dark-mode user never sees a white flash.
+     app.js takes over from here; this only sets the initial attributes. -->
+<script>
+(function(){
+  try{
+    var t=localStorage.getItem("cmp.theme.v1");
+    if(t!=="dark"&&t!=="light"){
+      t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    }
+    document.documentElement.setAttribute("data-theme",t);
+    var l=localStorage.getItem("cmp.lang.v1");
+    if(l==="en"||l==="fr"||l==="ar"){
+      document.documentElement.setAttribute("lang",l);
+      document.documentElement.setAttribute("dir",l==="ar"?"rtl":"ltr");
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body data-page="builder">
+
+<!-- Global navigation is injected by app.js so every page stays in sync. -->
+<header id="site-header"></header>
+
+<main>
+
+<section class="prebuilt-hero"><span class="eyebrow" data-cms="page.eyebrow">Compatibility</span>
+<h1 data-cms="page.title">Compatibility checks</h1>
+<p data-cms="page.description">The System Builder validates these automatically as you pick parts.</p></section>
+<div class="form-card"><div class="product-list">
+<div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">CPU socket matches the motherboard socket</div></div></div><div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">Memory generation matches the board (DDR4 / DDR5)</div></div></div><div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">Cooler bracket covers the chosen socket</div></div></div><div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">GPU length fits the case clearance</div></div></div><div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">PSU wattage covers estimated load plus 40% headroom</div></div></div><div class="product-row" style="grid-template-columns:1fr"><div><div class="product-name">Storage interface is supported by the board</div></div></div>
+</div><div class="hero-actions"><a class="btn primary" href="../builder/index.html">Run checks in the builder</a></div></div>
+
+</main>
+
+<!-- Footer is injected by app.js so its 4 columns stay in sync everywhere. -->
+<footer id="site-footer"></footer>
+
+<script>window.CHECKMYPC_ROOT="../";</script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)">
+<title>Prebuilt PCs — CHECKMYPC.MA</title>
+<meta name="description" content="Prebuilt gaming and office PCs in Morocco, filtered by budget.">
+<link rel="icon" href="../assets/mark.svg">
+<link rel="stylesheet" href="../assets/picker.css">
+<link rel="stylesheet" href="../assets/site.css">
+<!-- Applied before first paint so a dark-mode user never sees a white flash.
+     app.js takes over from here; this only sets the initial attributes. -->
+<script>
+(function(){
+  try{
+    var t=localStorage.getItem("cmp.theme.v1");
+    if(t!=="dark"&&t!=="light"){
+      t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    }
+    document.documentElement.setAttribute("data-theme",t);
+    var l=localStorage.getItem("cmp.lang.v1");
+    if(l==="en"||l==="fr"||l==="ar"){
+      document.documentElement.setAttribute("lang",l);
+      document.documentElement.setAttribute("dir",l==="ar"?"rtl":"ltr");
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body data-page="prebuilts">
+
+<!-- Global navigation is injected by app.js so every page stays in sync. -->
+<header id="site-header"></header>
+
+<main>
+
+<section class="prebuilt-hero">
+  <span class="eyebrow" data-cms="page.eyebrow">Prebuilt PCs</span>
+  <h1 data-cms="page.title">Ready-to-buy systems</h1>
+  <p data-cms="page.description">Complete machines priced from live component offers. Filter by budget bracket,
+     store, GPU or condition.</p>
+</section>
+
+<div id="prebuilt-view">
+  <div class="toolbar">
+    <div class="budget-row" id="pb-brackets"></div>
+    <div class="select-row">
+      <select class="select" id="pb-store"></select>
+      <select class="select" id="pb-gpu"></select>
+      <select class="select" id="pb-cpu"></select>
+      <select class="select" id="pb-format"></select>
+      <select class="select" id="pb-condition">
+        <option value="">New &amp; used</option>
+        <option value="new">New only</option>
+        <option value="used">Used only</option>
+      </select>
+      <select class="select" id="pb-sort">
+        <option value="price-asc">Price: low to high</option>
+        <option value="price-desc">Price: high to low</option>
+      </select>
+    </div>
+  </div>
+  <div class="results-head"><strong id="pb-count">&mdash;</strong></div>
+  <div class="prebuilt-grid" id="pb-grid"></div>
+</div>
+
+</main>
+
+<!-- Footer is injected by app.js so its 4 columns stay in sync everywhere. -->
+<footer id="site-footer"></footer>
+
+<script>window.CHECKMYPC_ROOT="../";</script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
